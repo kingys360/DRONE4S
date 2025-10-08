@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+
+  input[type="range"] {
+    @apply cursor-pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    @apply appearance-none h-4 w-4 rounded-full bg-emerald-500 cursor-pointer;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    @apply h-4 w-4 rounded-full bg-emerald-500 cursor-pointer border-0;
+  }
+
+  input[type="checkbox"]:checked + span {
+    @apply bg-emerald-600/30 border-emerald-500/40;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Map container utilities */
+  .map-wrapper {
+    @apply flex-1 h-full;
+  }
+
+  #map-container {
+    @apply w-full h-full min-h-[600px] relative z-10 bg-neutral-900 rounded-lg border border-white/10;
+  }
+}
+
+/* Map popup styling for both Mappls InfoWindow content and Leaflet popups */
+.map-popup {
+  background: rgba(17,24,39,0.95); /* neutral-900/95 */
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+  min-width: 160px;
+  font-size: 13px;
+  line-height: 1.2;
+}
+.map-popup .map-popup-title {
+  font-weight: 700;
+  color: #f8fafc; /* text-slate-50 */
+  margin-bottom: 0.25rem;
+}
+.map-popup .map-popup-sub {
+  font-size: 12px;
+  color: #9ca3af; /* neutral-400 */
+  margin-bottom: 0.25rem;
+}
+.map-popup .map-popup-body {
+  color: #e5e7eb; /* neutral-200 */
+}
+
+/* Leaflet popup wrapper override to reduce default white background and ensure z-index */
+.leaflet-popup-content-wrapper, .map-popup-wrapper {
+  background: rgba(17,24,39,0.95) !important;
+  color: #fff !important;
+  padding: 0 !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6) !important;
+}
+.leaflet-popup-tip {
+  background: rgba(17,24,39,0.95) !important;
+}
+.leaflet-popup-content {
+  padding: 0 !important;
+}
+.leaflet-container .leaflet-popup {
+  z-index: 10000 !important;
+}
